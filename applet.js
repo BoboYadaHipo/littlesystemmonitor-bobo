@@ -171,7 +171,7 @@ MyApplet.prototype = {
         this.actor.add(this.values2);
 
 		//this.actor.add_style_class_name('mainContainer');
-        //this.actor.min_width = 200;
+        this.actor.width = 100;
 
 		this.cpu = new CPU();
         this.memory = new Memory();

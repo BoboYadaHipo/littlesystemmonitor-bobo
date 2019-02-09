@@ -150,11 +150,13 @@ MyApplet.prototype = {
         this.setupUI();
     },
 
-    setupUI: function() {
-        this.set_applet_tooltip("bliblablub");
+    setupUI: function() {  
+
+        //this.set_applet_tooltip("");
 
         this.values = new St.BoxLayout({vertical: true});
         this.values2 = new St.BoxLayout({vertical: true});
+        this.valuesBox = new St.BoxLayout({vertical: false});
 		
         this.valueCPU = new St.Label({text: "0%"});
         this.valueMemory = new St.Label({text: "0GB"});
@@ -167,12 +169,17 @@ MyApplet.prototype = {
         this.values2.add(this.valueCPU);
         this.values2.add(this.valueMemory);
 
-        this.actor.add(this.values);
-        this.actor.add(this.values2);
+        this.valuesBox.add(this.values);
+        this.valuesBox.add(this.values2);
+        this.actor.add(this.valuesBox);
 
-		//this.actor.add_style_class_name('mainContainer');
-        this.actor.width = 100;
-
+        this.values.add_style_class_name('column1');
+        this.values2.add_style_class_name('column2');
+        
+        this.actor.width = 108;
+        this.values.width = 50;
+        this.values2.width = 58;
+        
 		this.cpu = new CPU();
         this.memory = new Memory();
         this.net = new Net();
